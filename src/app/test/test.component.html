@@ -1,0 +1,20 @@
+<div>
+    <input placeholder="Tên" [(ngModel)]="newName">
+    <input placeholder="Tuổi" [(ngModel)]="newAge">
+    <br>
+    <button (click)="addPerson();">Thêm người mới</button>
+</div>
+<select [(ngModel)]="nowStatus">
+    <option value="XemTatCa">Tất cả</option>
+    <option value="XemNam">Nam</option>
+    <option value="XemNu">Nữ</option>
+</select>
+<div *ngFor="let person of arrPerson">
+    <div class="per" *ngIf="getShow(person.status);">   
+        <h4>Tên: {{person.name}}</h4>
+        <p>Tuổi: {{person.age}}</p>
+        <p>Giới tính: <span [ngStyle]="{color: person.status ? 'blue' : 'red'}"> {{person.status ? 'Nam' : 'Nu'}}</span></p>
+        <button (click)="deletePerson(person.id);">Delete</button>
+        <button (click)="person.status = !person.status">Thay đổi giới tính</button>
+    </div>
+</div>
